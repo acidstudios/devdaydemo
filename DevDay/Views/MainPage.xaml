@@ -13,7 +13,11 @@
 				ItemsSource="{Binding DevDayList}">
 			<ListView.ItemTemplate>
 				<DataTemplate>
-					<TextCell Text="{Binding Title}" Detail="{Binding Author, StringFormat='Por: {0}'}" />
+					<TextCell Text="{Binding Title}" Detail="{Binding Author, StringFormat='Por: {0}'}" >
+						<ViewCell.ContextActions>
+							<MenuItem IsDestructive="true" Text="Borrar" Clicked="Handle_Clicked" CommandParameter="{Binding .}" />
+						</ViewCell.ContextActions>
+					</TextCell>
 				</DataTemplate>
 			</ListView.ItemTemplate>
 		</ListView>

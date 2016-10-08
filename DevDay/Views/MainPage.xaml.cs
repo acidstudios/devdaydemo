@@ -19,5 +19,12 @@ namespace DevDay
 
 			Navigation.PushAsync(new MainDetailPage(model));
 		}
+
+		void Handle_Clicked(object sender, System.EventArgs e)
+		{
+			var context = BindingContext as MainPageViewModel;
+			var model = ((MenuItem)sender);
+			context?.OnDeleteConferenceCommand.Execute(model.CommandParameter);
+		}
 	}
 }

@@ -20,6 +20,12 @@ namespace DevDay
 			set;
 		}
 
+		public ICommand OnDeleteConferenceCommand
+		{
+			get;
+			set;
+		}
+
 		public MainPageViewModel(INavigation navigation)
 		{
 			var model = new List<DevDayModel>
@@ -60,6 +66,11 @@ namespace DevDay
 				});
 
 				await navigation.PushModalAsync(new NavigationPage(addPage));
+			});
+
+			OnDeleteConferenceCommand = new Command<DevDayModel>((obj) =>
+			{
+				DevDayList.Remove(obj);
 			});
 		}
 	}
